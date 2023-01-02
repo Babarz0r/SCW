@@ -23,7 +23,7 @@ spec:
         image: nginx
         ports:
         - name: web
-          containerPort: 80
+          containerPort: 80 # test
 ---
 apiVersion: v1
 kind: Service
