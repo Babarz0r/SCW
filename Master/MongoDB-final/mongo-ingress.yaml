@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mongo-express
+  annotations:
+    kubernetes.io/ingress.class: "nginx"    
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Cluster-issuer Change
+spec:
+    rules:
+    - host: mongodb.fabienganderatz.com
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: mongodb-svc 
+              port:
+                number: 8081 # port 80 by default
+    tls:
+    - hosts:
+      - mongodb.fabienganderatz.com
+      secretName: mongodb-tls-secret              
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mongo-express-cert
+spec:
+  secretName: mongodb-tls-secret
+  issuerRef:
+    name: ssl-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - mongodb.fabienganderatz.com
