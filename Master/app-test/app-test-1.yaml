@@ -49,7 +49,7 @@ metadata:
   namespace: app-test-1
   annotations:
     kubernetes.io/ingress.class: "nginx"    
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Cluster-issuer Change
 spec:
   rules:
   - host: "app-test-1.fabienganderatz.com"
