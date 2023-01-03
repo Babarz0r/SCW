@@ -4,11 +4,7 @@ metadata:
   name: mongodb-ingress
   namespace: mongodb-namespace
 spec:
-  # tls:
-  # - hosts:
-  #   - myapp.com
-  #     secretName: myapp-secret-tls
-  rules:
+    rules:
     - host: mongodb.fabienganderatz.com
       http:
         paths:
@@ -19,3 +15,7 @@ spec:
                 name: mongodb-express-service
                 port:
                   number: 8081
+    tls:
+    - hosts:
+      - mongodb.fabienganderatz.com
+      secretName: myapp-secret-tls
