@@ -74,8 +74,8 @@ metadata:
   namespace: app-test-1
 spec:
   secretName: app-test-1-tls-secret
-  issuerRef:
-    name: ssl-issuer
-    kind: ClusterIssuer
+  #issuerRef:
+  #  name: ssl-issuer
+  #  kind: ClusterIssuer
   dnsNames:
     - app-test-1.fabienganderatz.com
