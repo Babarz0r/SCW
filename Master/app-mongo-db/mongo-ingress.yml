@@ -3,9 +3,12 @@ kind: Ingress
 metadata:
   name: mongodb-ingress
   namespace: mongodb-namespace
+  annotations:
+    kubernetes.io/ingress.class: "nginx"    
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Cluster-issuer Change
 spec:
     rules:
-    - host: mongodb.fabienganderatz.com
+    - host: mongo-ui.fabienganderatz.com
       http:
         paths:
           - path: /
@@ -17,5 +20,19 @@ spec:
                   number: 8081
     tls:
     - hosts:
-      - mongodb.fabienganderatz.com
-      secretName: myapp-secret-tls
+      - mongo-ui.fabienganderatz.com
+      secretName: mongodb-tls-secret
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mongo-express-cert
+  namespace: mongodb-namespace
+spec:
+  secretName: mongodb-tls-secret
+  issuerRef:
+    name: ssl-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - mongodb.fabienganderatz.com
