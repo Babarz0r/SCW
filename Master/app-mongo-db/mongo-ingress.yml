@@ -35,4 +35,4 @@ spec:
     name: ssl-issuer
     kind: ClusterIssuer
   dnsNames:
-    - mongodb.fabienganderatz.com
+    - mongo-ui.fabienganderatz.com #TEST
