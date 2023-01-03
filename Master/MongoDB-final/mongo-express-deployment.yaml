@@ -59,7 +59,7 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod" # Cluster-issuer Change
 spec:
   rules:
-  - host: "mongodb.fabienganderatz.com"
+  - host: mongodb.fabienganderatz.com
     http:
       paths:
       - path: /
