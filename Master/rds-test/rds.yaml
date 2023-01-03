@@ -68,13 +68,8 @@ metadata:
 spec:
   secretName: mongodb-tls-cert
   issuerRef:
-    name: letsencrypt-prod
+    name: ssl-issuer
+    kind: ClusterIssuer
   commonName: mongodb.fabienganderatz.com
   dnsNames:
   - mongodb.fabienganderatz.com
-  acme:
-    config:
-    - http01:
-        ingressClass: nginx
-      domains:
-      - mongodb.fabienganderatz.com
