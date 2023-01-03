@@ -46,7 +46,7 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 80
+      port: 80 #port 8081 by default
       targetPort: 8081
 
 ---
@@ -68,7 +68,7 @@ spec:
           service:
             name: mongodb-svc 
             port:
-              number: 8081
+              number: 80 # port 80 by default
   tls:
   - hosts:
     - mongodb.fabienganderatz.com
