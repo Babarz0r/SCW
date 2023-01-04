@@ -79,3 +79,13 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - app-test-1.fabienganderatz.com
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-test-1secret
+  namespace: app-test-1
+type: Opaque
+data:
+  mongo-root-username: YWRtaW4=
+  mongo-root-password: cGFzc3dvcmQ=
