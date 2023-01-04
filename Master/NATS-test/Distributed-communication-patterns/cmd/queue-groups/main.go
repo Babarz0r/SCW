@@ -3,14 +3,16 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
 	"time"
 
 	"github.com/nats-io/nats.go"
 )
 
 func main() {
-	nc, err := nats.Connect(nats.DefaultURL)
+	servers := []string{"nats://nats.mnq.fr-par.scw.cloud:4222"}
 
+	nc, err := nats.Connect(strings.Join(servers, ","), nats.UserCredentials("admin_crendentials.creds"))
 	if err != nil {
 		log.Fatalln(err)
 	}
